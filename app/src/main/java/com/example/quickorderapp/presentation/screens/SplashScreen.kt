@@ -16,7 +16,6 @@ import kotlinx.coroutines.delay
 import androidx.compose.runtime.getValue
 
 
-
 @Composable
 fun SplashScreen(navController: NavController) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.splash))

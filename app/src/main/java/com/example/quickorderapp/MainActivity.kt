@@ -21,7 +21,9 @@ import com.example.quickorderapp.presentation.BottomBar
 import com.example.quickorderapp.presentation.NavigationGraph
 import com.example.quickorderapp.ui.theme.BottomNavigationBarTheme
 import com.example.quickorderapp.ui.theme.QuickOrderAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
