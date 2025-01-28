@@ -6,15 +6,19 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -38,77 +42,74 @@ import com.example.quickorderapp.domain.model.Meal
 fun MealCard(
     meal: Meal,
     onClick: () -> Unit,
-    onFavoriteClick: (Meal) -> Unit, // Favori tıklama işlevi
+    onFavoriteClick: () -> Unit, // Favori tıklama işlevi
     isFavorite: Boolean // Favori durumu
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.elevatedCardElevation(),
         modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1f)
+            .fillMaxWidth() // Kart tam genişlikte olacak
+            .padding(horizontal = 8.dp) // Kartın yan taraflarında boşluk
             .clickable { onClick() } // Kart tıklama
     ) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            // Görsel ve Yemek İsmi
-            Column(modifier = Modifier.fillMaxSize()) {
-                Image(
-                    painter = rememberAsyncImagePainter(meal.thumbnail),
-                    contentDescription = meal.name,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(100.dp)
-                )
-                Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically // Dikeyde ortalama
+        ) {
+            // Görsel
+            Image(
+                painter = rememberAsyncImagePainter(meal.thumbnail),
+                contentDescription = meal.name,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .height(100.dp)
+                    .aspectRatio(1f) // Görsel kare boyutunda olacak
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
                 Text(
                     text = meal.name,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .align(Alignment.CenterHorizontally)
+                    fontWeight = FontWeight.Bold
                 )
             }
 
-            // Kalp İkonu
             androidx.compose.material3.Icon(
                 imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                 contentDescription = "Favorite",
                 tint = if (isFavorite) androidx.compose.ui.graphics.Color.Red else androidx.compose.ui.graphics.Color.Gray,
                 modifier = Modifier
-                    .align(Alignment.TopEnd) // Sağ üst köşe
-                    .padding(8.dp)
-                    .clickable { onFavoriteClick(meal) } // Favori tıklama
+                    .clickable { onFavoriteClick() } // Favori tıklama
             )
         }
     }
 }
+
+
 @Composable
 fun MealGrid(
     meals: List<Meal>,
-    onItemClick: (Meal) -> Unit
+    favorites: List<Meal>, // Favoriler listesi
+    onItemClick: (Meal) -> Unit,
+    onFavoriteClick: (Meal) -> Unit
 ) {
-    // Favori durumlarını takip etmek için bir MutableStateMap
-    val favoriteState = remember { mutableStateMapOf<String, Boolean>() }
-
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
+    LazyColumn(
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.fillMaxSize()
     ) {
         items(meals) { meal ->
-            val isFavorite = favoriteState[meal.id] ?: false
+            val isFavorite = favorites.contains(meal)
             MealCard(
                 meal = meal,
                 onClick = { onItemClick(meal) },
-                isFavorite = isFavorite, // Favori durumu
-                onFavoriteClick = { clickedMeal ->
-                    // Favori durumunu güncelle
-                    favoriteState[clickedMeal.id] = !(favoriteState[clickedMeal.id] ?: false)
-                }
+                isFavorite = isFavorite,
+                onFavoriteClick = { onFavoriteClick(meal) }
             )
         }
     }

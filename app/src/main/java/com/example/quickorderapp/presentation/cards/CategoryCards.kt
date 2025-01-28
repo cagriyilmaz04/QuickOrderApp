@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -26,10 +27,10 @@ fun CategoryGrid(
     onItemClick: (Category) -> Unit
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
+        columns = GridCells.Fixed(2), // Her satırda 2 kategori
         contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
         items(categories) { category ->
@@ -48,32 +49,39 @@ fun CategoryCard(
     onClick: () -> Unit
 ) {
     Card(
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.elevatedCardElevation(),
+        shape = RoundedCornerShape(16.dp), // Yuvarlak köşeler
+        elevation = CardDefaults.elevatedCardElevation(8.dp), // Gölge efekti
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1f)
+            .aspectRatio(1f) // Kare görünüm
+            .padding(8.dp) // Kart çevresine boşluk
             .clickable { onClick() } // Tıklama işlevi
     ) {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp), // İçerik çevresine boşluk
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
+            // Görsel
             Image(
                 painter = rememberAsyncImagePainter(category.thumbnail),
                 contentDescription = category.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(72.dp)
+                    .size(100.dp) // Görsel boyutu
+                    .clip(RoundedCornerShape(50.dp)) // Görseli yuvarlak yapar
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Başlık
             Text(
                 text = category.name,
-                fontSize = 14.sp,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .align(Alignment.CenterHorizontally)
+                color = androidx.compose.ui.graphics.Color.Black,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         }
     }

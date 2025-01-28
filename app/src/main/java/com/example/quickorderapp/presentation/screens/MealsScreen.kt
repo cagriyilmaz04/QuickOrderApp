@@ -13,9 +13,11 @@ import com.example.quickorderapp.presentation.viewmodel.MealsViewModel
 @Composable
 fun MealScreen(
     viewModel: MealsViewModel = hiltViewModel(),
+    favoritesViewModel: FavoritesViewModel = hiltViewModel(), // Favoriler için ViewModel
     category: String
 ) {
     val uiState by viewModel.mealsUiState.collectAsState()
+    val favorites by favoritesViewModel.favorites.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.fetchMeals(category)
@@ -29,8 +31,18 @@ fun MealScreen(
             val meals = (uiState as MealsUiState.Success).meals
             MealGrid(
                 meals = meals,
+                favorites = favorites, // Favori öğeler listesi
                 onItemClick = { meal ->
+                    // Öğe tıklandığında yapılacak işlem
                     println("Meal clicked: ${meal.name}")
+                },
+                onFavoriteClick = { meal ->
+                    // Favorilere ekle/kaldır işlemi
+                    if (favorites.contains(meal)) {
+                        favoritesViewModel.removeFavorite(meal) // Favoriden çıkar
+                    } else {
+                        favoritesViewModel.addFavorite(meal) // Favoriye ekle
+                    }
                 }
             )
         }
