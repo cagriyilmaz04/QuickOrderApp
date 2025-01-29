@@ -49,13 +49,17 @@ fun CategoryCard(
     onClick: () -> Unit
 ) {
     Card(
-        shape = RoundedCornerShape(16.dp), // Yuvarlak köşeler
-        elevation = CardDefaults.elevatedCardElevation(8.dp), // Gölge efekti
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.elevatedCardElevation(8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = androidx.compose.ui.graphics.Color(0xFFFFEBEE),
+            contentColor = androidx.compose.ui.graphics.Color.Black
+        ),
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1f) // Kare görünüm
-            .padding(8.dp) // Kart çevresine boşluk
-            .clickable { onClick() } // Tıklama işlevi
+            .aspectRatio(1f)
+            .padding(8.dp)
+            .clickable { onClick() }
     ) {
         Column(
             modifier = Modifier

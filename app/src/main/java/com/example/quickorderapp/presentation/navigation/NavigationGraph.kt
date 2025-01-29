@@ -1,5 +1,7 @@
 package com.example.quickorderapp.presentation
 
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -11,22 +13,37 @@ import com.example.quickorderapp.presentation.screens.HomeScreen
 import com.example.quickorderapp.presentation.screens.MealScreen
 import com.example.quickorderapp.presentation.screens.SplashScreen
 
-
 @Composable
 fun NavigationGraph(navController: NavHostController,  onDestinationChanged: (Boolean) -> Unit) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Splash.route
+        startDestination = Screen.Splash.route,
+        enterTransition = { fadeIn(animationSpec = tween(700)) },
+        exitTransition = { fadeOut(animationSpec = tween(700)) }
     ) {
-        composable(Screen.Splash.route) {
+        composable(
+            route = Screen.Splash.route,
+            enterTransition = { fadeIn(animationSpec = tween(500)) },
+            exitTransition = { fadeOut(animationSpec = tween(500)) }
+        ) {
             onDestinationChanged(false)
             SplashScreen(navController)
         }
-        composable(Screen.Home.route) {
+
+        composable(
+            route = Screen.Home.route,
+            enterTransition = { slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(500)) },
+            exitTransition = { slideOutHorizontally(targetOffsetX = { -1000 }, animationSpec = tween(500)) }
+        ) {
             onDestinationChanged(true)
             HomeScreen(navController)
         }
-        composable(Screen.Favorites.route) {
+
+        composable(
+            route = Screen.Favorites.route,
+            enterTransition = { slideInVertically(initialOffsetY = { 1000 }, animationSpec = tween(500)) },
+            exitTransition = { slideOutVertically(targetOffsetY = { -1000 }, animationSpec = tween(500)) }
+        ) {
             onDestinationChanged(true)
             FavoritesScreen()
         }
