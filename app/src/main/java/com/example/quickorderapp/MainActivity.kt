@@ -1,5 +1,6 @@
 package com.example.quickorderapp
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
             BottomNavigationBarTheme {
                 val systemUiController = rememberSystemUiController()
                 systemUiController.setSystemBarsColor(color = Color.White)

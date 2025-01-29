@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFFBB86FC),
-    secondary = Color(0xFF03DAC5),
-    background = Color(0xFF121212),
-    surface = Color(0xFF1E1E1E),
+    primary = Color.White,
+    secondary = Color.White,
+    background = Color.White,
+    surface = Color.White,
     onPrimary = Color.Black,
     onSecondary = Color.Black,
     onBackground = Color.White,
@@ -31,9 +31,9 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF6200EE),
-    secondary = Color(0xFF03DAC5),
-    background = Color(0xFFF5F5F5),
+    primary = Color.White,
+    secondary = Color.White,
+    background = Color.White,
     surface = Color.White,
     onPrimary = Color.White,
     onSecondary = Color.Black,
@@ -83,13 +83,13 @@ fun QuickOrderAppTheme(
 ) {
     val colors = (if (darkTheme) {
         darkColorScheme(
-            primary = Color(0xFF1B1B1B), // Özel koyu tema renkleri
-            background = Color(0xFF121212)
+        background = Color.Black,  // Dark modda arka plan rengi siyah
+            surface = Color.Black
         )
     } else {
         lightColorScheme(
-            primary = Color(0xFF6200EE), // Özel açık tema renkleri
-            background = Color(0xFFF5F5F5) // Arka plan rengini özelleştir
+            background = Color.White, // Özel açık tema renkleri
+            surface = Color.White // Arka plan rengini özelleştir
         )
     }).also {
 

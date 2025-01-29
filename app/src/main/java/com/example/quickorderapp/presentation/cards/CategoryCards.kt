@@ -1,6 +1,7 @@
 package com.example.quickorderapp.presentation.cards
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -26,21 +28,28 @@ fun CategoryGrid(
     categories: List<Category>,
     onItemClick: (Category) -> Unit
 ) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2), // Her satırda 2 kategori
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier.fillMaxSize()
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White) // Tüm alanın arka planını değiştir
     ) {
-        items(categories) { category ->
-            CategoryCard(
-                category = category,
-                onClick = { onItemClick(category) }
-            )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(8.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxSize().background(Color.White)
+        ) {
+            items(categories) { category ->
+                CategoryCard(
+                    category = category,
+                    onClick = { onItemClick(category) }
+                )
+            }
         }
     }
 }
+
 
 
 @Composable
@@ -52,7 +61,7 @@ fun CategoryCard(
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.elevatedCardElevation(8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = androidx.compose.ui.graphics.Color(0xFFFFEBEE),
+            containerColor = Color.White,
             contentColor = androidx.compose.ui.graphics.Color.Black
         ),
         modifier = Modifier

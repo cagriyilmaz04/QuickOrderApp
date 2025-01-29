@@ -13,6 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.quickorderapp.presentation.Screen
+import com.example.quickorderapp.presentation.animations.AnimatedCategoryGrid
+import com.example.quickorderapp.presentation.animations.AnimatedErrorMessage
+import com.example.quickorderapp.presentation.animations.AnimatedLoading
 import com.example.quickorderapp.presentation.cards.CategoryGrid
 import com.example.quickorderapp.util.encodeUrl
 
@@ -29,10 +32,10 @@ fun HomeScreen(
     ) {
         when (uiState) {
             is CategoryUiState.Loading -> {
-                CircularProgressIndicator()
+                AnimatedLoading()
             }
             is CategoryUiState.Success -> {
-                CategoryGrid(
+                AnimatedCategoryGrid(
                     categories = (uiState as CategoryUiState.Success).categories,
                     onItemClick = { category ->
                         navController.navigate(
@@ -46,7 +49,7 @@ fun HomeScreen(
                 )
             }
             is CategoryUiState.Error -> {
-                Text(text = (uiState as CategoryUiState.Error).message)
+                AnimatedErrorMessage((uiState as CategoryUiState.Error).message)
             }
         }
     }
