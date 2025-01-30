@@ -20,5 +20,4 @@ object Constants {
     val CORNER_RADIUS = 16.dp
     val IMAGE_CORNER_RADIUS = 50.dp
     const val GRID_ASPECT_RATIO = 1f
-
 }

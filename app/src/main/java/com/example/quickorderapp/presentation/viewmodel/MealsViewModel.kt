@@ -1,5 +1,4 @@
 package com.example.quickorderapp.presentation.viewmodel
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickorderapp.domain.usecase.GetMealsByCategoryUseCase

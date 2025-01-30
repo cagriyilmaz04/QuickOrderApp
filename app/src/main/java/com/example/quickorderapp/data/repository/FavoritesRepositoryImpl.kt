@@ -25,10 +25,26 @@ class FavoritesRepositoryImpl(
     }
 
     override suspend fun addFavorite(meal: Meal) {
-        dao.addFavorite(MealEntity(meal.id, meal.name, meal.thumbnail,meal.price,meal.description))
+        dao.addFavorite(
+            MealEntity(
+                meal.id,
+                meal.name,
+                meal.thumbnail,
+                meal.price,
+                meal.description
+            )
+        )
     }
 
     override suspend fun removeFavorite(meal: Meal) {
-        dao.removeFavorite(MealEntity(meal.id, meal.name, meal.thumbnail,meal.price,meal.description))
+        dao.removeFavorite(
+            MealEntity(
+                meal.id,
+                meal.name,
+                meal.thumbnail,
+                meal.price,
+                meal.description
+            )
+        )
     }
 }

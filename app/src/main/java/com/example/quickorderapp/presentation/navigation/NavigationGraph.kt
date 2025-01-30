@@ -33,8 +33,18 @@ fun NavigationGraph(navController: NavHostController, onDestinationChanged: (Boo
 
         composable(
             route = Screen.Home.route,
-            enterTransition = { slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(500)) },
-            exitTransition = { slideOutHorizontally(targetOffsetX = { -1000 }, animationSpec = tween(500)) }
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { 1000 },
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { -1000 },
+                    animationSpec = tween(500)
+                )
+            }
         ) {
             onDestinationChanged(true)
             HomeScreen(navController)
@@ -42,8 +52,18 @@ fun NavigationGraph(navController: NavHostController, onDestinationChanged: (Boo
 
         composable(
             route = Screen.Favorites.route,
-            enterTransition = { slideInVertically(initialOffsetY = { 1000 }, animationSpec = tween(500)) },
-            exitTransition = { slideOutVertically(targetOffsetY = { -1000 }, animationSpec = tween(500)) }
+            enterTransition = {
+                slideInVertically(
+                    initialOffsetY = { 1000 },
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                slideOutVertically(
+                    targetOffsetY = { -1000 },
+                    animationSpec = tween(500)
+                )
+            }
         ) {
             onDestinationChanged(true)
             FavoritesScreen()
