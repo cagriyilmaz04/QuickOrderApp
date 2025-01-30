@@ -10,9 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -89,21 +87,24 @@ fun MealCard(
                         text = "Price: $it",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFFE67E22), // Turuncu fiyat
+                        color = Color(0xFFE67E22),
                         textAlign = TextAlign.Start
                     )
                 }
             }
 
-            androidx.compose.material3.Icon(
-                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                contentDescription = "Favorite",
-                tint = if (isFavorite) Color.Red else Color.Gray,
-                modifier = Modifier
-                    .width(Constants.ICON_SIZE)
-                    .height(Constants.ICON_SIZE)
-                    .clickable { onFavoriteClick() }
-            )
+            IconButton(
+                onClick = { onFavoriteClick() }
+            ) {
+                Icon(
+                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                    contentDescription = "Favorite",
+                    tint = if (isFavorite) Color.Red else Color.Gray,
+                    modifier = Modifier
+                        .width(Constants.ICON_SIZE)
+                        .height(Constants.ICON_SIZE)
+                )
+            }
         }
     }
 }
