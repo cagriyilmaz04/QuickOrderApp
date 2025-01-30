@@ -1,10 +1,10 @@
-QuickOrderApp 🍽️📱
+# QuickOrderApp 🍽️📱
 
 QuickOrderApp is a modern Android application that allows users to browse a restaurant’s menu and manage their favorite dishes efficiently. The app is built using Kotlin, Jetpack Compose, and Google Cloud, following the MVVM architecture for clean and scalable code structure.
 
-📌 Features
+## 📌 Features
 
-🍛 Menu Screen
+## 🍛 Menu Screen
 
 Displays a list of dishes with their name, description, and price.
 
@@ -14,7 +14,7 @@ Each dish is shown as a Card component with an image and details.
 
 Users can mark dishes as favorites with a simple tap.
 
-❤️ Favorites Screen
+## ❤️ Favorites Screen
 
 Lists all favorited dishes in a separate section.
 
@@ -22,7 +22,7 @@ Users can remove dishes from their favorites.
 
 Includes smooth animations when adding or removing favorites.
 
-🎨 Modern UI & Animations
+## 🎨 Modern UI & Animations
 
 Built with Jetpack Compose for a declarative and reactive UI.
 
@@ -30,9 +30,9 @@ Smooth transitions & animations for better user experience.
 
 Uses Material 3 components for a clean and stylish design.
 
-🛠️ Technologies & Architecture
+## 🛠️ Technologies & Architecture
 
-📱 Android Development
+## 📱 Android Development
 
 Kotlin → Modern programming language for Android development.
 
@@ -42,7 +42,7 @@ MVVM Architecture → Ensures clean separation of concerns.
 
 Navigation Component → Manages screen transitions smoothly.
 
-🌐 Networking & API
+## 🌐 Networking & API
 
 Custom API → Hosted on Google Cloud (Cloud API).
 
@@ -52,7 +52,7 @@ OkHttp → Manages network calls efficiently.
 
 Gson → Parses JSON responses.
 
-💾 Local Storage
+## 💾 Local Storage
 
 Room Database → Stores favorites locally.
 
@@ -62,11 +62,11 @@ DAO (Data Access Object) → Handles database operations.
 
 Hilt (Dagger Hilt) → Manages dependencies cleanly.
 
-📦 State Management
+## 📦 State Management
 
 Flow & StateFlow → Handles reactive UI updates efficiently.
 
-🚀 How It Works
+## 🚀 How It Works
 
 Launch the App → The menu is fetched from the Cloud API.
 
