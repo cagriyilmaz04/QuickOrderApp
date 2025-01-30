@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.quickorderapp.presentation.cards.MealCard
+import com.example.quickorderapp.util.Constants.PADDING_SMALL
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -18,8 +19,8 @@ fun FavoritesScreen(
     val favorites by viewModel.favorites.collectAsState()
 
     LazyColumn(
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        contentPadding = PaddingValues(PADDING_SMALL),
+        verticalArrangement = Arrangement.spacedBy(PADDING_SMALL)
     ) {
         items(favorites, key = { it.id }) { meal ->
             var isVisible by remember { mutableStateOf(true) }

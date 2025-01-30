@@ -33,6 +33,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.quickorderapp.domain.model.Meal
+import com.example.quickorderapp.util.Constants
+import com.example.quickorderapp.util.Constants.IMAGE_CORNER_RADIUS
+import com.example.quickorderapp.util.Constants.IMAGE_SIZE_HEIGHT
+import com.example.quickorderapp.util.Constants.IMAGE_SIZE_WIDTH
+import com.example.quickorderapp.util.Constants.PADDING_MEDIUM
+import com.example.quickorderapp.util.Constants.PADDING_SMALL
 
 @Composable
 fun MealCard(
@@ -42,33 +48,33 @@ fun MealCard(
     isFavorite: Boolean
 ) {
     Card(
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.elevatedCardElevation(8.dp),
+        shape = RoundedCornerShape(Constants.CORNER_RADIUS),
+        elevation = CardDefaults.elevatedCardElevation(Constants.CARD_ELEVATION),
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFF8F8F8)
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(PADDING_SMALL)
             .clickable { onClick() }
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(PADDING_MEDIUM),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Görsel
+
             Image(
                 painter = rememberAsyncImagePainter(meal.thumbnail),
                 contentDescription = meal.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .width(80.dp)
-                    .height(82.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .width(IMAGE_SIZE_WIDTH)
+                    .height(IMAGE_SIZE_HEIGHT)
+                    .clip(RoundedCornerShape(IMAGE_CORNER_RADIUS))
             )
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(PADDING_MEDIUM))
 
             Column(
                 modifier = Modifier.weight(1f)
@@ -86,8 +92,8 @@ fun MealCard(
                 contentDescription = "Favorite",
                 tint = if (isFavorite) Color.Red else Color.Gray,
                 modifier = Modifier
-                    .width(24.dp)
-                    .height(24.dp)
+                    .width(Constants.ICON_SIZE)
+                    .height(Constants.ICON_SIZE)
                     .clickable { onFavoriteClick() }
             )
         }
@@ -102,9 +108,11 @@ fun MealGrid(
     onFavoriteClick: (Meal) -> Unit
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.fillMaxSize().background(Color.White)
+        contentPadding = PaddingValues(PADDING_SMALL),
+        verticalArrangement = Arrangement.spacedBy(PADDING_SMALL),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
     ) {
         items(meals) { meal ->
             val isFavorite = favorites.contains(meal)
@@ -117,3 +125,4 @@ fun MealGrid(
         }
     }
 }
+

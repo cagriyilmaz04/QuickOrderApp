@@ -18,10 +18,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.quickorderapp.domain.model.Category
+import com.example.quickorderapp.util.Constants.CARD_ELEVATION
+import com.example.quickorderapp.util.Constants.CORNER_RADIUS
+import com.example.quickorderapp.util.Constants.GRID_ASPECT_RATIO
+import com.example.quickorderapp.util.Constants.IMAGE_CORNER_RADIUS
+import com.example.quickorderapp.util.Constants.IMAGE_SIZE
+import com.example.quickorderapp.util.Constants.PADDING_MEDIUM
+import com.example.quickorderapp.util.Constants.PADDING_SMALL
 
 @Composable
 fun CategoryGrid(
@@ -31,13 +37,13 @@ fun CategoryGrid(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White) // Tüm alanın arka planını değiştir
+            .background(Color.White)
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(8.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(PADDING_SMALL),
+            verticalArrangement = Arrangement.spacedBy(PADDING_MEDIUM),
+            horizontalArrangement = Arrangement.spacedBy(PADDING_MEDIUM),
             modifier = Modifier.fillMaxSize().background(Color.White)
         ) {
             items(categories) { category ->
@@ -56,22 +62,22 @@ fun CategoryCard(
     onClick: () -> Unit
 ) {
     Card(
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.elevatedCardElevation(8.dp),
+        shape = RoundedCornerShape(CORNER_RADIUS),
+        elevation = CardDefaults.elevatedCardElevation(CARD_ELEVATION),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
-            contentColor = androidx.compose.ui.graphics.Color.Black
+            contentColor = Color.Black
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1f)
-            .padding(8.dp)
+            .aspectRatio(GRID_ASPECT_RATIO)
+            .padding(PADDING_SMALL)
             .clickable { onClick() }
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp), // İçerik çevresine boşluk
+                .padding(PADDING_MEDIUM),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -81,17 +87,17 @@ fun CategoryCard(
                 contentDescription = category.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(100.dp) // Görsel boyutu
-                    .clip(RoundedCornerShape(50.dp)) // Görseli yuvarlak yapar
+                    .size(IMAGE_SIZE)
+                    .clip(RoundedCornerShape(IMAGE_CORNER_RADIUS))
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(PADDING_MEDIUM))
 
             // Başlık
             Text(
                 text = category.name,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                color = androidx.compose.ui.graphics.Color.Black,
+                color = Color.Black,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         }
