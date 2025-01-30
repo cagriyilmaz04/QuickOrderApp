@@ -6,75 +6,75 @@ QuickOrderApp is a modern Android application that allows users to browse a rest
 
 ## 🍛 Menu Screen
 
-Displays a list of dishes with their name, description, and price.
+- Displays a list of dishes with their name, description, and price.
 
-Uses LazyColumn for smooth scrolling.
+- Uses LazyColumn for smooth scrolling.
 
-Each dish is shown as a Card component with an image and details.
+- Each dish is shown as a Card component with an image and details.
 
-Users can mark dishes as favorites with a simple tap.
+- Users can mark dishes as favorites with a simple tap.
 
 ## ❤️ Favorites Screen
 
-Lists all favorited dishes in a separate section.
+- Lists all favorited dishes in a separate section.
 
-Users can remove dishes from their favorites.
+- Users can remove dishes from their favorites.
 
-Includes smooth animations when adding or removing favorites.
+- Includes smooth animations when adding or removing favorites.
 
 ## 🎨 Modern UI & Animations
 
-Built with Jetpack Compose for a declarative and reactive UI.
+- Built with Jetpack Compose for a declarative and reactive UI.
 
-Smooth transitions & animations for better user experience.
+- Smooth transitions & animations for better user experience.
 
-Uses Material 3 components for a clean and stylish design.
+- Uses Material 3 components for a clean and stylish design.
 
 ## 🛠️ Technologies & Architecture
 
 ## 📱 Android Development
 
-Kotlin → Modern programming language for Android development.
+- Kotlin → Modern programming language for Android development.
 
-Jetpack Compose → Fully declarative UI framework.
+- Jetpack Compose → Fully declarative UI framework.
 
-MVVM Architecture → Ensures clean separation of concerns.
+- MVVM Architecture → Ensures clean separation of concerns.
 
-Navigation Component → Manages screen transitions smoothly.
+- Navigation Component → Manages screen transitions smoothly.
 
 ## 🌐 Networking & API
 
-Custom API → Hosted on Google Cloud (Cloud API).
+- Custom API → Hosted on Google Cloud (Cloud API).
 
-Retrofit → Handles network requests.
+- Retrofit → Handles network requests.
 
-OkHttp → Manages network calls efficiently.
+- OkHttp → Manages network calls efficiently.
 
-Gson → Parses JSON responses.
+- Gson → Parses JSON responses.
 
 ## 💾 Local Storage
 
-Room Database → Stores favorites locally.
+- Room Database → Stores favorites locally.
 
-DAO (Data Access Object) → Handles database operations.
+- DAO (Data Access Object) → Handles database operations.
 
-🔧 Dependency Injection
+- 🔧 Dependency Injection
 
-Hilt (Dagger Hilt) → Manages dependencies cleanly.
+- Hilt (Dagger Hilt) → Manages dependencies cleanly.
 
 ## 📦 State Management
 
-Flow & StateFlow → Handles reactive UI updates efficiently.
+- Flow & StateFlow → Handles reactive UI updates efficiently.
 
 ## 🚀 How It Works
 
-Launch the App → The menu is fetched from the Cloud API.
+- Launch the App → The menu is fetched from the Cloud API.
 
-Mark Favorites → Tap the heart icon to add a dish to favorites.
+- Mark Favorites → Tap the heart icon to add a dish to favorites.
 
-View Favorites → Navigate to the favorites screen.
+- View Favorites → Navigate to the favorites screen.
 
-Remove Favorites → Tap the heart icon again to remove a dish.
+- Remove Favorites → Tap the heart icon again to remove a dish.
 
 🛠️ Setup & Installation
 
