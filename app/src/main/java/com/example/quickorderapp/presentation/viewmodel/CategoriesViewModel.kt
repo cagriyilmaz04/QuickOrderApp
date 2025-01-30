@@ -24,12 +24,10 @@ class CategoriesViewModel @Inject constructor(
 
     private fun fetchCategories() {
         viewModelScope.launch {
-            try {
-                val categories = getCategoriesUseCase()
+            getCategoriesUseCase().collect { categories ->
                 _categoriesUiState.value = CategoryUiState.Success(categories)
-            } catch (e: Exception) {
-                _categoriesUiState.value = CategoryUiState.Error(e.message ?: "Unknown error")
             }
         }
     }
+
 }

@@ -7,5 +7,8 @@ import androidx.room.PrimaryKey
 data class MealEntity(
     @PrimaryKey val id: String,
     val name: String,
-    val thumbnail: String
+    val thumbnail: String,
+    val price: String,
+    val description: String
+
 )

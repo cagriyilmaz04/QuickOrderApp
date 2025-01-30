@@ -16,17 +16,19 @@ class FavoritesRepositoryImpl(
                 Meal(
                     id = entity.id,
                     name = entity.name,
-                    thumbnail = entity.thumbnail
+                    thumbnail = entity.thumbnail,
+                    price = entity.price,
+                    description = entity.description
                 )
             }
         }
     }
 
     override suspend fun addFavorite(meal: Meal) {
-        dao.addFavorite(MealEntity(meal.id, meal.name, meal.thumbnail))
+        dao.addFavorite(MealEntity(meal.id, meal.name, meal.thumbnail,meal.price,meal.description))
     }
 
     override suspend fun removeFavorite(meal: Meal) {
-        dao.removeFavorite(MealEntity(meal.id, meal.name, meal.thumbnail))
+        dao.removeFavorite(MealEntity(meal.id, meal.name, meal.thumbnail,meal.price,meal.description))
     }
 }

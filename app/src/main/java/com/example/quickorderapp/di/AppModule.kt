@@ -5,7 +5,8 @@ import androidx.room.Room
 import com.airbnb.lottie.compose.BuildConfig
 import com.example.quickorderapp.data.local.FavoritesDao
 import com.example.quickorderapp.data.local.FavoritesDatabase
-import com.example.quickorderapp.data.remote.ApiService
+import com.example.quickorderapp.data.remote.CloudApiService
+import com.example.quickorderapp.data.remote.TheMealDBApiService
 import com.example.quickorderapp.data.repository.CategoryRepositoryImpl
 import com.example.quickorderapp.data.repository.FavoritesRepositoryImpl
 import com.example.quickorderapp.data.repository.MealRepositoryImpl
@@ -15,7 +16,7 @@ import com.example.quickorderapp.domain.repository.MealRepository
 import com.example.quickorderapp.domain.usecase.FavoritesUseCase
 import com.example.quickorderapp.domain.usecase.GetCategoriesUseCase
 import com.example.quickorderapp.domain.usecase.GetMealsByCategoryUseCase
-import com.example.quickorderapp.util.Constants.BASE_URL
+import com.example.quickorderapp.util.Constants
 import com.example.quickorderapp.util.Constants.ORDER_DATABASE_NAME
 import com.example.quickorderapp.util.Constants.TIMEOUT
 import dagger.Module
@@ -28,6 +29,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -56,9 +58,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    @Named("MealDBRetrofit")
+    fun provideMealDBRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_URL_MEAL_DB)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -66,14 +69,31 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
+    @Named("CloudRetrofit")
+    fun provideCloudRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL_CLOUD)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
     @Provides
     @Singleton
-    fun provideCategoryRepository(apiService: ApiService): CategoryRepository {
-        return CategoryRepositoryImpl(apiService)
+    fun provideTheMealDBApiService(@Named("MealDBRetrofit") retrofit: Retrofit): TheMealDBApiService {
+        return retrofit.create(TheMealDBApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCloudApiService(@Named("CloudRetrofit") retrofit: Retrofit): CloudApiService {
+        return retrofit.create(CloudApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoryRepository(theMealDBApiService: TheMealDBApiService): CategoryRepository {
+        return CategoryRepositoryImpl(theMealDBApiService)
     }
 
     @Provides
@@ -84,8 +104,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideMealRepository(apiService: ApiService): MealRepository {
-        return MealRepositoryImpl(apiService)
+    fun provideMealRepository(
+        cloudApiService: CloudApiService,
+        theMealDBApiService: TheMealDBApiService
+    ): MealRepository {
+        return MealRepositoryImpl(cloudApiService, theMealDBApiService)
     }
 
     @Provides
@@ -101,7 +124,7 @@ object AppModule {
             context,
             FavoritesDatabase::class.java,
             name = ORDER_DATABASE_NAME
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides

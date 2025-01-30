@@ -81,7 +81,6 @@ fun CategoryCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Görsel
             Image(
                 painter = rememberAsyncImagePainter(category.thumbnail),
                 contentDescription = category.name,
@@ -92,7 +91,6 @@ fun CategoryCard(
             )
             Spacer(modifier = Modifier.height(PADDING_MEDIUM))
 
-            // Başlık
             Text(
                 text = category.name,
                 fontSize = 16.sp,

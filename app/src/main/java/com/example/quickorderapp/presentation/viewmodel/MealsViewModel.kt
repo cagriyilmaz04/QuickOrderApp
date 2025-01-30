@@ -21,8 +21,9 @@ class MealsViewModel @Inject constructor(
     fun fetchMeals(category: String) {
         viewModelScope.launch {
             try {
-                val meals = getMealsByCategoryUseCase(category)
-                _mealsUiState.value = MealsUiState.Success(meals)
+                getMealsByCategoryUseCase(category).collect { meals -> // Flow'u topluyoruz
+                    _mealsUiState.value = MealsUiState.Success(meals)
+                }
             } catch (e: Exception) {
                 _mealsUiState.value = MealsUiState.Error(e.message ?: "Unknown error")
             }

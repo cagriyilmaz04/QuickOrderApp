@@ -3,12 +3,12 @@ package com.example.quickorderapp.util
 import androidx.compose.ui.unit.dp
 
 object Constants {
-    const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
+    const val BASE_URL_MEAL_DB = "https://www.themealdb.com/api/json/v1/1/"
+    const val BASE_URL_CLOUD = "http://34.60.187.225:8080/"
     const val ORDER_DATABASE_NAME = "favorites_db"
     const val TIMEOUT = 30L
 
     const val ENDPOINT_CATEGORIES = "categories.php"
-    const val ENDPOINT_MEALS_BY_CATEGORY = "filter.php"
 
     val PADDING_SMALL = 8.dp
     val PADDING_MEDIUM = 16.dp
