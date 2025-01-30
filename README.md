@@ -96,22 +96,43 @@ Connect a device/emulator and run the app.
 📂 Project Structure
 
 📦 QuickOrderApp
-┣ 📂 data
-┃ ┣ 📂 local
-┃ ┣ 📂 remote
-┃ ┣ 📂 repository
-┣ 📂 domain
-┃ ┣ 📂 model
-┃ ┣ 📂 repository
-┃ ┣ 📂 usecase
-┣ 📂 presentation
-┃ ┣ 📂 screens
-┃ ┣ 📂 components
-┃ ┣ 📂 viewmodel
-┣ 📂 di (Dependency Injection)
-┣ 📂 util (Constants & Helpers)
-┣ AndroidManifest.xml
-┗ build.gradle
+QuickOrderApp/
+│── app/
+│   │── src/
+│   │   │── main/
+│   │   │   │── java/com/example/quickorderapp/
+│   │   │   │   │── data/
+│   │   │   │   │   │── local/          # Room Database (FavoritesDao, FavoritesDatabase, Entities)
+│   │   │   │   │   │── remote/         # Retrofit API Services (CloudApiService, TheMealDBApiService)
+│   │   │   │   │   │── repository/     # Repository Implementations (MealRepository, CategoryRepository)
+│   │   │   │   │── domain/
+│   │   │   │   │   │── model/          # Data Models (Meal, Category)
+│   │   │   │   │   │── repository/     # Repository Interfaces
+│   │   │   │   │   │── usecase/        # Business Logic (GetMealsByCategoryUseCase, GetCategoriesUseCase)
+│   │   │   │   │── presentation/
+│   │   │   │   │   │── screens/        # UI Screens (MealScreen, FavoritesScreen)
+│   │   │   │   │   │── viewmodel/      # ViewModels (MealsViewModel, CategoriesViewModel)
+│   │   │   │   │   │── navigation/     # Navigation (NavigationGraph, Screen)
+│   │   │   │   │   │── components/     # UI Components (MealCard, CategoryCard)
+│   │   │   │   │── di/                 # Dependency Injection (AppModule, Hilt setup)
+│   │   │   │   │── util/               # Utilities (Constants, Extensions)
+│   │   │── res/
+│   │   │   │── drawable/               # Icons, Images
+│   │   │   │── layout/                 # XML Layouts (if any)
+│   │   │   │── values/                 # Strings, Colors, Dimensions
+│── backend/                             # Spring Boot Backend
+│   │── src/
+│   │   │── main/java/com/example/backend/
+│   │   │   │── controller/              # API Endpoints (MealController, CategoryController)
+│   │   │   │── service/                 # Business Logic (MealService, CategoryService)
+│   │   │   │── repository/              # JPA Repository (MealRepository, CategoryRepository)
+│   │   │   │── model/                   # Entity Models (Meal, Category)
+│   │── application.properties           # Database Configurations
+│── build.gradle                         # Project Dependencies
+│── README.md                            # Project Documentation
+│── .gitignore                            # Ignored Files
+│── settings.gradle                       # Gradle Settings
+
 
 🔗API Endpoints
 
