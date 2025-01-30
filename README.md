@@ -16,6 +16,9 @@ QuickOrderApp is a modern Android application that allows users to browse a rest
 ![Favorite Screen](4.PNG)
 ## 📌 Features
 
+## 🏁 Splash Screen
+- Uses Lottie Animation for an engaging start-up experience.
+- Automatically navigates to the Menu Screen after a brief delay.
 ## 🍛 Menu Screen
 
 - Displays a list of dishes with their name, description, and price.
