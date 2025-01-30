@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.quickorderapp.presentation.BottomBar
+import com.example.quickorderapp.presentation.navigation.BottomBar
 import com.example.quickorderapp.presentation.NavigationGraph
 import com.example.quickorderapp.ui.theme.BottomNavigationBarTheme
 import com.example.quickorderapp.ui.theme.QuickOrderAppTheme

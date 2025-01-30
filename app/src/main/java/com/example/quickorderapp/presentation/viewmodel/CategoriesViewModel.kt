@@ -3,7 +3,7 @@ package com.example.quickorderapp.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quickorderapp.domain.usecase.GetCategoriesUseCase
-import com.example.quickorderapp.presentation.screens.CategoryUiState
+import com.example.quickorderapp.presentation.state.CategoryUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

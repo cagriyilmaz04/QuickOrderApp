@@ -15,6 +15,9 @@ import com.example.quickorderapp.domain.repository.MealRepository
 import com.example.quickorderapp.domain.usecase.FavoritesUseCase
 import com.example.quickorderapp.domain.usecase.GetCategoriesUseCase
 import com.example.quickorderapp.domain.usecase.GetMealsByCategoryUseCase
+import com.example.quickorderapp.util.Constants.BASE_URL
+import com.example.quickorderapp.util.Constants.ORDER_DATABASE_NAME
+import com.example.quickorderapp.util.Constants.TIMEOUT
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,9 +47,9 @@ object AppModule {
 
         return OkHttpClient.Builder()
             .addInterceptor(logging)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .build()
     }
@@ -55,7 +58,7 @@ object AppModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://www.themealdb.com/api/json/v1/1/")
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -97,7 +100,7 @@ object AppModule {
         return Room.databaseBuilder(
             context,
             FavoritesDatabase::class.java,
-            "favorites_db"
+            name = ORDER_DATABASE_NAME
         ).build()
     }
 

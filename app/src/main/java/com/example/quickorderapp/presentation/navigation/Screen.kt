@@ -1,4 +1,4 @@
-package com.example.quickorderapp.presentation
+package com.example.quickorderapp.presentation.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Favorite

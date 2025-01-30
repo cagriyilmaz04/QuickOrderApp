@@ -8,6 +8,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.quickorderapp.presentation.cards.MealGrid
+import com.example.quickorderapp.presentation.state.MealsUiState
 import com.example.quickorderapp.presentation.viewmodel.MealsViewModel
 
 @Composable

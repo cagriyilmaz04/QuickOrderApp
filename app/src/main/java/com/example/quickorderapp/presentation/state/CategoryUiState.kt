@@ -1,4 +1,4 @@
-package com.example.quickorderapp.presentation.screens
+package com.example.quickorderapp.presentation.state
 
 import com.example.quickorderapp.domain.model.Category
 

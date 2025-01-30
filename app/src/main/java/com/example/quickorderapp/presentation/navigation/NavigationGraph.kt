@@ -8,6 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.quickorderapp.presentation.navigation.Screen
 import com.example.quickorderapp.presentation.screens.FavoritesScreen
 import com.example.quickorderapp.presentation.screens.HomeScreen
 import com.example.quickorderapp.presentation.screens.MealScreen

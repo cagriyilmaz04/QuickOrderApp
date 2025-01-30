@@ -9,10 +9,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.quickorderapp.presentation.Screen
+import com.example.quickorderapp.presentation.navigation.Screen
 import com.example.quickorderapp.presentation.animations.AnimatedCategoryGrid
 import com.example.quickorderapp.presentation.animations.AnimatedErrorMessage
 import com.example.quickorderapp.presentation.animations.AnimatedLoading
+import com.example.quickorderapp.presentation.state.CategoryUiState
 import com.example.quickorderapp.presentation.viewmodel.CategoriesViewModel
 import com.example.quickorderapp.util.encodeUrl
 

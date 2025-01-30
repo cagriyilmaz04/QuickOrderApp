@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -43,21 +42,21 @@ fun MealCard(
     isFavorite: Boolean
 ) {
     Card(
-        shape = RoundedCornerShape(16.dp), // Yuvarlatılmış köşeler
-        elevation = CardDefaults.elevatedCardElevation(8.dp), // Gölge efekti
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.elevatedCardElevation(8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = androidx.compose.ui.graphics.Color(0xFFF8F8F8) // Kartın arka plan rengi
+            containerColor = Color(0xFFF8F8F8)
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp) // Kartın çevresine boşluk
+            .padding(8.dp)
             .clickable { onClick() }
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically // Dikeyde ortalanır
+            verticalAlignment = Alignment.CenterVertically
         ) {
             // Görsel
             Image(
@@ -67,27 +66,25 @@ fun MealCard(
                 modifier = Modifier
                     .width(80.dp)
                     .height(82.dp)
-                    .clip(RoundedCornerShape(8.dp)) // Yuvarlatılmış görsel
+                    .clip(RoundedCornerShape(8.dp))
             )
-            Spacer(modifier = Modifier.width(16.dp)) // Görsel ile metin arasında boşluk
+            Spacer(modifier = Modifier.width(16.dp))
 
-            // Yemek İsmi
             Column(
-                modifier = Modifier.weight(1f) // Kalan alanı kaplar
+                modifier = Modifier.weight(1f)
             ) {
                 Text(
                     text = meal.name,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = androidx.compose.ui.graphics.Color.Black // Metin rengi
+                    color = Color.Black
                 )
             }
 
-            // Favori İkonu
             androidx.compose.material3.Icon(
                 imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                 contentDescription = "Favorite",
-                tint = if (isFavorite) androidx.compose.ui.graphics.Color.Red else androidx.compose.ui.graphics.Color.Gray,
+                tint = if (isFavorite) Color.Red else Color.Gray,
                 modifier = Modifier
                     .width(24.dp)
                     .height(24.dp)
@@ -100,7 +97,7 @@ fun MealCard(
 @Composable
 fun MealGrid(
     meals: List<Meal>,
-    favorites: List<Meal>, // Favoriler listesi
+    favorites: List<Meal>,
     onItemClick: (Meal) -> Unit,
     onFavoriteClick: (Meal) -> Unit
 ) {
