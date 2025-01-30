@@ -2,6 +2,18 @@
 
 QuickOrderApp is a modern Android application that allows users to browse a restaurant’s menu and manage their favorite dishes efficiently. The app is built using Kotlin, Jetpack Compose, and Google Cloud, following the MVVM architecture for clean and scalable code structure.
 
+# Screenshots
+## Splash Screen
+![Splash Screen](1.PNG)
+
+## Category Screen
+![Category Screen](2.PNG)
+
+## Meal Screen
+![Meal Screen](3.PNG)
+
+## Favorite Screen
+![Favorite Screen](4.PNG)
 ## 📌 Features
 
 ## 🍛 Menu Screen
