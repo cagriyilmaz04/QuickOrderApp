@@ -14,7 +14,7 @@ import com.example.quickorderapp.presentation.screens.MealScreen
 import com.example.quickorderapp.presentation.screens.SplashScreen
 
 @Composable
-fun NavigationGraph(navController: NavHostController,  onDestinationChanged: (Boolean) -> Unit) {
+fun NavigationGraph(navController: NavHostController, onDestinationChanged: (Boolean) -> Unit) {
     NavHost(
         navController = navController,
         startDestination = Screen.Splash.route,
@@ -56,7 +56,6 @@ fun NavigationGraph(navController: NavHostController,  onDestinationChanged: (Bo
             )
         ) { backStackEntry ->
             val categoryName = backStackEntry.arguments?.getString("categoryName")
-
 
             MealScreen(
                 category = categoryName.toString()

@@ -1,11 +1,9 @@
 package com.example.quickorderapp
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,16 +31,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             BottomNavigationBarTheme {
                 val systemUiController = rememberSystemUiController()
                 systemUiController.setSystemBarsColor(color = Color.White)
 
-
                 val navController: NavHostController = rememberNavController()
                 val buttonsVisibleState = remember { mutableStateOf(true) }
                 val buttonsVisible = buttonsVisibleState.value
-
 
                 Scaffold(
                     bottomBar = {
@@ -56,7 +51,8 @@ class MainActivity : ComponentActivity() {
                                     .background(Color.White)
                             )
                         }
-                    }) { paddingValues ->
+                    }
+                ) { paddingValues ->
                     Box(
                         modifier = Modifier.padding(paddingValues)
                     ) {

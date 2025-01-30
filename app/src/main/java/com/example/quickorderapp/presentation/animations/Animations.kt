@@ -1,6 +1,5 @@
 package com.example.quickorderapp.presentation.animations
 
-
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.Box

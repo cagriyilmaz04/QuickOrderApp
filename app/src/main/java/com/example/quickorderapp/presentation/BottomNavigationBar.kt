@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -17,7 +16,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 @Composable
 fun BottomBar(
     navController: NavHostController,
-    state: Boolean,
     modifier: Modifier = Modifier
 ) {
     val screens = listOf(
@@ -35,7 +33,7 @@ fun BottomBar(
         screens.forEach { screen ->
             NavigationBarItem(
                 label = {
-                    Text(text = screen.title!!)
+                    Text(text = screen.title)
                 },
                 icon = {
                     Icon(imageVector = screen.icon!!, contentDescription = "")
@@ -56,7 +54,7 @@ fun BottomBar(
                     selectedIconColor = Color.Black,
                     unselectedIconColor = Color.Black,
                     indicatorColor = Color.White
-                ),
+                )
             )
         }
     }

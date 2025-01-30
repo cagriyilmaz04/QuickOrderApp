@@ -40,6 +40,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color.Black,
     onSurface = Color.Black
 )
+
 @Composable
 fun BottomNavigationBarTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -76,23 +77,25 @@ val Shapes = Shapes(
     medium = RoundedCornerShape(8.dp),
     large = RoundedCornerShape(16.dp)
 )
+
 @Composable
 fun QuickOrderAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = (if (darkTheme) {
-        darkColorScheme(
-        background = Color.Black,  // Dark modda arka plan rengi siyah
-            surface = Color.Black
-        )
-    } else {
-        lightColorScheme(
-            background = Color.White, // Özel açık tema renkleri
-            surface = Color.White // Arka plan rengini özelleştir
-        )
-    }).also {
-
+    val colors = (
+        if (darkTheme) {
+            darkColorScheme(
+                background = Color.Black, // Dark modda arka plan rengi siyah
+                surface = Color.Black
+            )
+        } else {
+            lightColorScheme(
+                background = Color.White, // Özel açık tema renkleri
+                surface = Color.White // Arka plan rengini özelleştir
+            )
+        }
+        ).also {
         MaterialTheme(
             colorScheme = it,
             typography = Typography,

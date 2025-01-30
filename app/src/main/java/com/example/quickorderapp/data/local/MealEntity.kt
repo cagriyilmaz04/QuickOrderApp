@@ -1,6 +1,5 @@
 package com.example.quickorderapp.data.local
 
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

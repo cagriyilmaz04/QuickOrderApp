@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
 }
 
 android {
@@ -49,6 +50,16 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    ktlint {
+        ignoreFailures.set(true)
+        disabledRules.set(listOf("no-wildcard-imports", "max-line-length"))
+        android.set(true)
+        filter {
+            exclude("**/generated/**")
+            exclude("**/test/**")
+            exclude("**/androidTest/**")
+        }
+    }
 }
 
 dependencies {
@@ -62,7 +73,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,9 +80,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    val nav_version = "2.8.4"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
-    implementation("com.airbnb.android:lottie-compose:6.0.0")
+
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.android.lottie.compose)
     implementation(libs.android.lottie.compose)
     // Dagger - Hilt
     implementation(libs.hilt.android)
@@ -82,12 +92,12 @@ dependencies {
 
     // Retrofit
     implementation(libs.retrofit)
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.converter.gson)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    //Coil
-    implementation("io.coil-kt:coil-compose:2.4.0")
+    // Coil
+    implementation(libs.coil.compose)
 
     // Room
     implementation(libs.androidx.room.ktx)

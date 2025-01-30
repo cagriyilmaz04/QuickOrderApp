@@ -1,6 +1,5 @@
 package com.example.quickorderapp.presentation.screens
 
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,7 +24,7 @@ fun FavoritesScreen(
         items(favorites) { meal ->
             MealCard(
                 meal = meal,
-                onClick = {  },
+                onClick = { },
                 onFavoriteClick = { viewModel.removeFavorite(meal) },
                 isFavorite = true
             )
