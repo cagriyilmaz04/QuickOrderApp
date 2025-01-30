@@ -54,6 +54,8 @@ QuickOrderApp is a modern Android application that allows users to browse a rest
 
 - Navigation Component → Manages screen transitions smoothly.
 
+- **Ktlint Code Formatting**: Ensures clean and structured **Kotlin code**.
+
 ## 🌐 Networking & API
 
 - Custom API → Hosted on Google Cloud (Cloud API).
