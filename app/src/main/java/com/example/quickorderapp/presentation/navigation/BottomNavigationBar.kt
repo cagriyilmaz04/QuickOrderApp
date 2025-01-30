@@ -50,12 +50,13 @@ fun BottomBar(
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    unselectedTextColor = Color.Gray,
-                    selectedTextColor = Color.Black,
-                    selectedIconColor = Color.Black,
-                    unselectedIconColor = Color.Black,
+                    unselectedTextColor = Color.LightGray,
+                    selectedTextColor = Color(0xFFFF9800),
+                    unselectedIconColor = Color.LightGray,
+                    selectedIconColor = Color(0xFFFF9800),
                     indicatorColor = Color.White
                 )
+
             )
         }
     }
